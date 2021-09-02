@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+    <link href="{% static 'pr/fontawesome/css/all.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'pr/css/templatemo-comparto.css' %}" rel="stylesheet" />
+    <title>Comparto HTML CSS Template</title>
+<!--
+
+Comparto TemplateMo
+
+https://templatemo.com/tm-544-comparto
+
+-->
+</head>
+
+<body>
+    <!-- Back to top button -->
+  <br><br>
+        <section class="tm-mb-1" id="about">
+            <div class="tm-row tm-about-row">
+                <div class="tm-section-1-l">
+                    <img src="{{prod.img.url}}" alt="About image" style="height:550px;width:650px" class="tm-img-responsive">
+                </div>
+                <article class="tm-section-1-r tm-bg-color-8">
+                    <h2 class="tm-mb-2 tm-title-color">{{prod.name}}</h2>
+
+                    <p>Price: {{prod.price}}rs <br>{{prod.desc}}</p>
+                    <p>Stock: {{prod.stock}}</p>
+  {% if prod.stock <= 0 %}
+  <h1 style="color:red">sorry...no stock left</h1>
+                    {% else %}
+
+                    <a href="{% url 'addcart' prod.id %}" class="tm-btn tm-btn-1 tm-link-to-services">Add to Cart</a>
+  {% endif %}
+                </article>
+            </div>
+        </section>
+      
+</body>
+</html>
+{% endblock %}
